@@ -13,18 +13,21 @@ function detectPlatform() {
   if (process.env.CF_PAGES) {
     return 'cloudflare';
   }
+  if (process.env.EDGEONE) {
+    return 'edgeone';
+  }
   if (process.env.NETLIFY) {
     return 'netlify';
   }
   if (process.env.GITHUB_ACTIONS) {
     return 'github';
   }
-  
+
   // Check if specific directories exist
   if (existsSync('.vercel')) {
     return 'vercel';
   }
-  
+
   // Default to standard dist directory
   return 'default';
 }
@@ -34,11 +37,12 @@ function getPagefindOutputDir(platform) {
   const outputDirs = {
     vercel: '.vercel/output/static',
     cloudflare: 'dist',
+    edgeone: 'dist',
     netlify: 'dist',
     github: 'dist',
     default: 'dist'
   };
-  
+
   return outputDirs[platform] || 'dist';
 }
 

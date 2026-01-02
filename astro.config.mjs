@@ -33,7 +33,20 @@ import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 
 // https://astro.build/config
 // Choose adapter depending on deployment environment
-const adapter = process.env.CF_PAGES ? cloudflarePages() : vercel({ mode: "serverless" });
+// CF_PAGES: Cloudflare Pages
+// EDGEONE: Tencent Cloud EdgeOne Pages (similar to Cloudflare)
+// VERCEL: Vercel
+const getAdapter = () => {
+    if (process.env.CF_PAGES || process.env.EDGEONE) {
+        return cloudflarePages();
+    }
+    if (process.env.VERCEL) {
+        return vercel({ mode: "serverless" });
+    }
+    // Default to Cloudflare adapter for edge platforms
+    return cloudflarePages();
+};
+const adapter = getAdapter();
 
 export default defineConfig({
     site: siteConfig.siteURL,
