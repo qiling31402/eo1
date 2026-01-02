@@ -2,9 +2,9 @@ backend:
   name: github
   repo: qilingzon/eo1
   branch: main
-  site_domain: t.aniv.cn  # 替换为您的域名
-  base_url: https://t.aniv.cn  # 替换为您的 URL
-  auth_endpoint: oauth
+  site_domain: t.aniv.cn
+  base_url: https://t.aniv.cn
+  auth_endpoint: oauth/
 # 语言设置
 locale: "zh_Hans"
 
