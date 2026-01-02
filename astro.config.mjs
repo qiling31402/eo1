@@ -7,7 +7,6 @@ import swup from "@swup/astro";
 import sitemap from "@astrojs/sitemap";
 import vercel from "@astrojs/vercel";
 import cloudflarePages from "@astrojs/cloudflare";
-import decapCmsOauth from "astro-decap-cms-oauth";
 import expressiveCode from "astro-expressive-code";
 import icon from "astro-icon";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -54,10 +53,6 @@ export default defineConfig({
     trailingSlash: "always",
     adapter: adapter,
     integrations: [
-        decapCmsOauth({
-            decapCMSVersion: "3.4.4",
-            oauthDisabled: true, // 使用自定义 OAuth 路由
-        }),
         tailwind({
             nesting: true,
         }),
