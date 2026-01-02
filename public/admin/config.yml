@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: qilingzon/eo1
+  repo: qiling31402/eo1
   branch: main
   auth_type: pkce
   app_id: Ov23liHRW4T7oJ3hn9A9
